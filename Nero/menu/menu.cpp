@@ -44,14 +44,14 @@ void Menu::Update()
 		std::cout << red << "Disabled" << white << std::endl << std::endl;
 
 
-	std::cout << "> Triggerbot [F3] = ";
+	std::cout << "> Triggerbot [F3 - Hold ALT] = ";
 	if (g_pAim->enabled)
 		std::cout << green << "Enabled " << white << std::endl << std::endl;
 	else
 		std::cout << red << "Disabled" << white << std::endl << std::endl;
 
 
-	std::cout << "> Bunnyhop [F4] = ";
+	std::cout << "> Bunnyhop [F4 - Hold SPACE] = ";
 	if (g_pMisc->enabled)
 		std::cout << green << "Enabled " << white << std::endl << std::endl;
 	else
