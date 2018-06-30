@@ -4,7 +4,8 @@ class Visuals
 {
 public:
 	void Glow();
-	bool enabled = false;
+	bool glowenabled = false;
+	bool chamsenabled = false;
 };
 
 extern Visuals* g_pVisuals;

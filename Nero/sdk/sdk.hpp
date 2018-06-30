@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../math/vector.hpp"
+
 class SDK
 {
 public:
@@ -9,8 +11,13 @@ public:
 	int GetLocalTeam();
 	int GetLocalHealth();
 	int GetLocalFlags();
+	int GetCrosshairID();
 	void ForceJump();
 	void ForceAttack();
+	uintptr_t GetEntityBase(int index);
+	int GetEntityTeam(uintptr_t playerBase);
+	Vector GetLocalVelocity();
+	bool IsGameFocused;
 };
 
 extern SDK* g_pSDK;

@@ -35,6 +35,9 @@
     <ClCompile Include="Nero\features\misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Nero\features\aim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Nero\utils\fnv.hpp">
@@ -68,6 +71,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Nero\features\misc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nero\features\aim.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nero\math\vector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

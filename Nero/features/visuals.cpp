@@ -6,7 +6,7 @@ void Visuals::Glow()
 {
 	while (true)
 	{
-		if (g_pSDK->IsInGame() && enabled)
+		if (g_pSDK->IsInGame() && (glowenabled || chamsenabled))
 		{
 			DWORD glowPointer = remote::read<uintptr_t>(g_pStatic->dwClientBase + g_pStatic->dwGlowObjectManager);
 			int objectCount = remote::read<int>(g_pStatic->dwClientBase + g_pStatic->dwGlowObjectManager + 0x4);
@@ -35,6 +35,14 @@ void Visuals::Glow()
 							glowObj.b = 1.0f;
 							glowObj.a = 0.6f;
 						}
+					
+						glowObj.m_bRenderWhenOccluded = true;
+						glowObj.m_bRenderWhenUnoccluded = false;
+						glowObj.m_bFullBloomRender = false;
+						if (chamsenabled)
+							glowObj.m_nGlowStyle = 1;
+						else
+							glowObj.m_nGlowStyle = 0;
 					}
 
 					if (classID == 1 || classID == 39 || classID >= 204 && classID <= 244 || classID == CBaseCSGrenade || classID == CBaseCSGrenadeProjectile || classID == CC4 || classID == CPlantedC4 || classID == CHEGrenade || classID == CMolotovProjectile || classID == CMolotovGrenade || classID == CIncendiaryGrenade || classID == CSmokeGrenade || classID == CSmokeGrenadeProjectile)
@@ -43,12 +51,12 @@ void Visuals::Glow()
 						glowObj.g = 0.6f;
 						glowObj.b = 0.86f;
 						glowObj.a = 0.7f;
-					}
 
-					glowObj.m_bRenderWhenOccluded = true;
-					glowObj.m_bRenderWhenUnoccluded = false;
-					glowObj.m_bFullBloomRender = false;
-					glowObj.m_nGlowStyle = 0;
+						glowObj.m_bRenderWhenOccluded = true;
+						glowObj.m_bRenderWhenUnoccluded = false;
+						glowObj.m_bFullBloomRender = false;
+						glowObj.m_nGlowStyle = 0;
+					}
 
 					remote::write<GlowObjectDefinition_t>(glowPointer + (i * 0x38), glowObj);
 				}

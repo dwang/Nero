@@ -66,6 +66,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Nero\features\aim.cpp" />
     <ClCompile Include="Nero\features\misc.cpp" />
     <ClCompile Include="Nero\features\visuals.cpp" />
     <ClCompile Include="Nero\main.cpp" />
@@ -76,9 +77,11 @@
     <ClCompile Include="Nero\utils\static.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Nero\features\aim.hpp" />
     <ClInclude Include="Nero\features\misc.hpp" />
     <ClInclude Include="Nero\features\visuals.hpp" />
     <ClInclude Include="Nero\include.hpp" />
+    <ClInclude Include="Nero\math\vector.hpp" />
     <ClInclude Include="Nero\menu\console_color.hpp" />
     <ClInclude Include="Nero\menu\menu.hpp" />
     <ClInclude Include="Nero\sdk\sdk.hpp" />

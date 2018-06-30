@@ -1,6 +1,7 @@
 #include "include.hpp"
 
 void glow() { g_pVisuals->Glow(); }
+void triggerbot() { g_pAim->TriggerBot(); }
 void bunnyhop() { g_pMisc->BunnyHop(); }
 
 int main()
@@ -21,40 +22,60 @@ int main()
 
 	std::cout << "> Successfully loaded Nero" << std::endl;
 
-	Beep(330, 100);
-
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 	g_pStatic->Setup();
-
 	g_pMenu->Update();
 
 	std::thread tGlow(glow);
+	std::thread tTriggerbot(triggerbot);
 	std::thread tBunnyhop(bunnyhop);
 
 	tGlow.detach();
+	tTriggerbot.detach();
 	tBunnyhop.detach();
 
 	while (true)
 	{
 		if (GetAsyncKeyState(VK_F1) & 0x8000)
 		{
-			g_pVisuals->enabled = !g_pVisuals->enabled;
+			g_pVisuals->glowenabled = !g_pVisuals->glowenabled;
+			g_pVisuals->chamsenabled = false;
 			g_pMenu->Update();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 
 		if (GetAsyncKeyState(VK_F2) & 0x8000)
 		{
+			g_pVisuals->chamsenabled = !g_pVisuals->chamsenabled;
+			g_pVisuals->glowenabled = false;
+			g_pMenu->Update();
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		}
+
+		if (GetAsyncKeyState(VK_F3) & 0x8000)
+		{
+			g_pAim->enabled = !g_pAim->enabled;
+			g_pMenu->Update();
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		}
+
+		if (GetAsyncKeyState(VK_F4) & 0x8000)
+		{
 			g_pMisc->enabled = !g_pMisc->enabled;
 			g_pMenu->Update();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
-			
+
+		if (FindWindowA(NULL, "Counter-Strike: Global Offensive") != GetForegroundWindow())
+			g_pSDK->IsGameFocused = false;
+		else
+			g_pSDK->IsGameFocused = true;
 
 		if (GetAsyncKeyState(VK_END) & 0x8000)
 		{
 			tGlow.~thread();
+			tTriggerbot.~thread();
 			tBunnyhop.~thread();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			remote::detach_process();

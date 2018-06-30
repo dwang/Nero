@@ -10,6 +10,7 @@ void Static::Setup()
 
 	dwClientBase = clientmodule.first;
 	dwEngineBase = enginemodule.first;
+
 	dwLocalPlayer = remote::read<uintptr_t>(remote::find_pattern(FNV("client.dll"), "\xA3\x00\x00\x00\x00\xC7\x05\x00\x00\x00\x00\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x59\xC3\x6A\x00", "x????xx????????x????xxx?") + 1) + 16 - clientmodule.first;
 	dwClientState = remote::read<uintptr_t>(remote::find_pattern(FNV("engine.dll"), "\xA1\x00\x00\x00\x00\x33\xD2\x6A\x00\x6A\x00\x33\xC9\x89\xB0", "x????xxx?x?xxxx") + 1) - enginemodule.first;
 	dwClientState_State = remote::read<uintptr_t>(remote::find_pattern(FNV("engine.dll"), "\x83\xB8\x00\x00\x00\x00\x00\x0F\x94\xC0\xC3", "xx?????xxxx") + 2);
