@@ -81,6 +81,7 @@
     <ClInclude Include="Nero\features\misc.hpp" />
     <ClInclude Include="Nero\features\visuals.hpp" />
     <ClInclude Include="Nero\include.hpp" />
+    <ClInclude Include="Nero\math\color.hpp" />
     <ClInclude Include="Nero\math\vector.hpp" />
     <ClInclude Include="Nero\menu\console_color.hpp" />
     <ClInclude Include="Nero\menu\menu.hpp" />

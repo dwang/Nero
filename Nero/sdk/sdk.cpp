@@ -61,3 +61,8 @@ Vector SDK::GetLocalVelocity()
 {
 	return remote::read<Vector>(GetLocalPlayer() + netvar_manager::get_offset_by_hash_cached<FNV("CBasePlayer->m_vecVelocity[0]")>());
 }
+
+void SDK::ForceFullUpdate()
+{
+	remote::write<int>(g_pSDK->GetClientState() + 0x174, -1);
+}

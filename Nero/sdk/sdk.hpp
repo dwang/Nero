@@ -17,6 +17,7 @@ public:
 	uintptr_t GetEntityBase(int index);
 	int GetEntityTeam(uintptr_t playerBase);
 	Vector GetLocalVelocity();
+	void ForceFullUpdate();
 	bool IsGameFocused;
 };
 

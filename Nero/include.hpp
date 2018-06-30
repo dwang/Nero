@@ -6,6 +6,7 @@
 #include "sdk/sdk.hpp"
 
 #include "math/vector.hpp"
+#include "math/color.hpp"
 
 #include "menu/menu.hpp"
 

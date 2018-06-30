@@ -19,14 +19,19 @@ void Visuals::Glow()
 				{
 					int classID = remote::read<int>(remote::read<int>(remote::read<int>(remote::read<int>(glowObj.m_pEntity + 0x8) + 2 * 0x4) + 0x1) + 20);
 
+					Color clrRender = {};
+
 					if (classID == CCSPlayer && !remote::read<bool>(glowObj.m_pEntity + 0xE9))
 					{
+
 						if (g_pSDK->GetLocalTeam() != remote::read<int>(glowObj.m_pEntity + 0xF0))
 						{
 							glowObj.r = 1.0f;
 							glowObj.g = 0.0f;
 							glowObj.b = 1.0f;
 							glowObj.a = 0.6f;
+
+							clrRender.SetColor(255, 0, 255, 255);
 						}
 						else
 						{
@@ -34,11 +39,14 @@ void Visuals::Glow()
 							glowObj.g = 0.5f;
 							glowObj.b = 1.0f;
 							glowObj.a = 0.6f;
+
+							clrRender.SetColor(0, 128, 255, 255);
 						}
 					
 						glowObj.m_bRenderWhenOccluded = true;
 						glowObj.m_bRenderWhenUnoccluded = false;
 						glowObj.m_bFullBloomRender = false;
+
 						if (chamsenabled)
 							glowObj.m_nGlowStyle = 1;
 						else
@@ -59,6 +67,8 @@ void Visuals::Glow()
 					}
 
 					remote::write<GlowObjectDefinition_t>(glowPointer + (i * 0x38), glowObj);
+					if (chamsenabled)
+						remote::write<Color>(glowObj.m_pEntity + 0x70, clrRender);
 				}
 			}
 		}

@@ -41,6 +41,7 @@ int main()
 		{
 			g_pVisuals->glowenabled = !g_pVisuals->glowenabled;
 			g_pVisuals->chamsenabled = false;
+			g_pSDK->ForceFullUpdate();
 			g_pMenu->Update();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
@@ -49,6 +50,7 @@ int main()
 		{
 			g_pVisuals->chamsenabled = !g_pVisuals->chamsenabled;
 			g_pVisuals->glowenabled = false;
+			g_pSDK->ForceFullUpdate();
 			g_pMenu->Update();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
