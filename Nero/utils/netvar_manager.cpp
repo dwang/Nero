@@ -67,7 +67,7 @@ namespace sdk
 	};
 }
 
-//#define DUMP_NETVARS
+#define DUMP_NETVARS
 
 #ifdef DUMP_NETVARS
 #define IF_DUMPING(...) __VA_ARGS__
@@ -93,6 +93,7 @@ netvar_manager::netvar_manager()
 				dump_recursive(net_name.data(), clazz.m_pRecvTable, 0);
 			}
 		}
+
 	IF_DUMPING(fclose(s_fp);)
 }
 

@@ -1,12 +1,13 @@
 #pragma once
 
-#include "utils/netvar_manager.hpp"
+//#include "utils/netvar_manager.hpp"
+#include "utils/remote.hpp"
 #include "utils/static.hpp"
+#include "utils/config.hpp"
 
 #include "sdk/sdk.hpp"
 
 #include "math/vector.hpp"
-#include "math/color.hpp"
 
 #include "menu/menu.hpp"
 
@@ -16,4 +17,7 @@
 
 #include <Windows.h>
 #include <iostream>
+#include <fstream>
 #include <thread>
+#include <filesystem>
+

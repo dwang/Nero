@@ -16,6 +16,8 @@ public:
 	void ForceAttack();
 	uintptr_t GetEntityBase(int index);
 	int GetEntityTeam(uintptr_t playerBase);
+	int GetEntityHealth(uintptr_t playerBase);
+	bool GetDormant(uintptr_t playerBase);
 	Vector GetLocalVelocity();
 	void ForceFullUpdate();
 	bool IsGameFocused;
@@ -38,14 +40,28 @@ extern SDK* g_pSDK;
 #define TEAM_ID_T 2
 #define TEAM_ID_CT 3
 
-
-struct GlowObjectDefinition_t
-{
-	uintptr_t m_pEntity;
+struct Color {
 	float r;
 	float g;
 	float b;
 	float a;
+
+	Color()
+	{
+	}
+
+	Color(float red, float green, float blue, float alpha) {
+		r = red;
+		g = green;
+		b = blue;
+		a = alpha;
+	}
+};
+
+struct GlowObjectDefinition_t
+{
+	uintptr_t m_pEntity;
+	Color clr;
 	char m_unk[4];
 	float m_flUnk;
 	float m_flBloomAmount;

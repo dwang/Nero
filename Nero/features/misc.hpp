@@ -3,8 +3,8 @@
 class Misc
 {
 public:
-	void BunnyHop();
-	bool enabled = false;
+	void bunnyhop();
+	bool bunnyhopenabled = false;
 };
 
 extern Misc* g_pMisc;

@@ -59,10 +59,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -72,7 +74,7 @@
     <ClCompile Include="Nero\main.cpp" />
     <ClCompile Include="Nero\menu\menu.cpp" />
     <ClCompile Include="Nero\sdk\sdk.cpp" />
-    <ClCompile Include="Nero\utils\netvar_manager.cpp" />
+    <ClCompile Include="Nero\utils\config.cpp" />
     <ClCompile Include="Nero\utils\remote.cpp" />
     <ClCompile Include="Nero\utils\static.cpp" />
   </ItemGroup>
@@ -81,16 +83,25 @@
     <ClInclude Include="Nero\features\misc.hpp" />
     <ClInclude Include="Nero\features\visuals.hpp" />
     <ClInclude Include="Nero\include.hpp" />
-    <ClInclude Include="Nero\math\color.hpp" />
     <ClInclude Include="Nero\math\vector.hpp" />
     <ClInclude Include="Nero\menu\console_color.hpp" />
     <ClInclude Include="Nero\menu\menu.hpp" />
+    <ClInclude Include="Nero\resource.h" />
     <ClInclude Include="Nero\sdk\sdk.hpp" />
+    <ClInclude Include="Nero\utils\config.hpp" />
     <ClInclude Include="Nero\utils\fnv.hpp" />
     <ClInclude Include="Nero\utils\memutils.hpp" />
-    <ClInclude Include="Nero\utils\netvar_manager.hpp" />
     <ClInclude Include="Nero\utils\remote.hpp" />
     <ClInclude Include="Nero\utils\static.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Nero\Nero.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Nero\Nero.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nero\Nero.aps" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

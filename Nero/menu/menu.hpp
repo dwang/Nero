@@ -5,10 +5,10 @@
 class Menu
 {
 public:
-	void Setup();
-	void Update();
+	void setup();
+	void update();
 private:
-	void ShowConsoleCursor(bool showFlag);
+	void showconsolecursor(bool showFlag);
 };
 
 extern Menu* g_pMenu;

@@ -3,8 +3,8 @@
 class Aim
 {
 public:
-	void TriggerBot();
-	bool enabled = false;
+	void triggerbot();
+	bool triggerbotenabled = false;
 };
 
 extern Aim* g_pAim;
