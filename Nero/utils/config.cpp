@@ -15,7 +15,7 @@ float Config::GetPrivateProfileFloatA(const char* element, const char* item)
 {
 	char result[255];
 	GetPrivateProfileStringA(element, item, NULL, result, 255, (PrintApplicationPath() + "\\Nero.ini").c_str());
-	return atof(result);
+	return (float) atof(result);
 }
 
 void Config::WritePrivateProfileFloatA(const char* element, const char* item, float value)

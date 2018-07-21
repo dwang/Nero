@@ -11,7 +11,7 @@ void Visuals::glow()
 			DWORD glowPointer = remote::read<uintptr_t>(g_pStatic->clientmodule.first + g_pStatic->dwGlowObjectManager);
 			int objectCount = remote::read<int>(g_pStatic->clientmodule.first + g_pStatic->dwGlowObjectManager + 0x4);
 
-			if (!glowPointer && objectCount)
+			if (!glowPointer || !objectCount)
 				continue;
 
 			for (int i = 0; i < objectCount; i++)
@@ -44,7 +44,7 @@ void Visuals::glow()
 								g_pVisuals->color = Color(0.0f, 0.0f, 1.0f, 0.6f);
 								break;
 							case 4:
-								g_pVisuals->color = Color((255 - 2.55 * g_pSDK->GetEntityHealth(glowObj.m_pEntity)) / 255.0f, (2.55 * g_pSDK->GetEntityHealth(glowObj.m_pEntity)) / 255.0f, 0.0f, 0.6f);
+								g_pVisuals->color = Color((255.0f - 2.55f * g_pSDK->GetEntityHealth(glowObj.m_pEntity)) / 255.0f, (2.55f * g_pSDK->GetEntityHealth(glowObj.m_pEntity)) / 255.0f, 0.0f, 0.6f);
 								break;
 							case 5:
 								g_pVisuals->color = Color(g_pConfig->visuals.custom_red / 255.0f, g_pConfig->visuals.custom_green / 255.0f, g_pConfig->visuals.custom_blue / 255.0f, g_pConfig->visuals.custom_alpha / 255.0f);
@@ -106,6 +106,9 @@ void Visuals::radar()
 		{
 			DWORD glowPointer = remote::read<uintptr_t>(g_pStatic->clientmodule.first + g_pStatic->dwGlowObjectManager);
 			int objectCount = remote::read<int>(g_pStatic->clientmodule.first + g_pStatic->dwGlowObjectManager + 0x4);
+
+			if (!glowPointer || !objectCount)
+				continue;
 
 			for (int i = 0; i < objectCount; i++)
 			{

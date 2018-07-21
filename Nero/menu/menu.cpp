@@ -4,7 +4,7 @@ Menu* g_pMenu = new Menu();
 
 void Menu::setup()
 {
-	SetConsoleTitleA("Nero 1.4");
+	SetConsoleTitleA("Nero 1.5");
 	g_pMenu->showconsolecursor(false);
 
 	std::cout << std::endl;
