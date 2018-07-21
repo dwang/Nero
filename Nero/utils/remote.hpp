@@ -12,7 +12,6 @@ namespace remote
 	auto raw_write(const uintptr_t address, const size_t size, const void* buffer) -> void;
 	auto find_module_by_name(const fnv::hash name)->std::pair<std::uintptr_t, std::size_t>;
 	auto find_pattern(const fnv::hash module_name, const char* pattern, const char* mask)->std::uintptr_t;
-	//auto accept_match() -> void;
 
 	template <typename T>
 	auto read(void* src) -> T

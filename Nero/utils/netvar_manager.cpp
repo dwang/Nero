@@ -67,9 +67,7 @@ namespace sdk
 	};
 }
 
-#define DUMP_NETVARS
-
-#ifdef DUMP_NETVARS
+#ifdef _DEBUG
 #define IF_DUMPING(...) __VA_ARGS__
 #else
 #define IF_DUMPING(...)

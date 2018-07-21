@@ -1,7 +1,6 @@
 #pragma once
 
-//#include "utils/netvar_manager.hpp"
-#include "utils/remote.hpp"
+#include "utils/netvar_manager.hpp"
 #include "utils/static.hpp"
 #include "utils/config.hpp"
 

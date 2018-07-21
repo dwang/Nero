@@ -38,6 +38,9 @@
     <ClCompile Include="Nero\utils\config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Nero\utils\netvar_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Nero\utils\fnv.hpp">
@@ -76,20 +79,20 @@
     <ClInclude Include="Nero\math\vector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Nero\resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Nero\utils\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Nero\Nero.rc" />
+    <ClInclude Include="Nero\utils\netvar_manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Nero\Nero.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Nero\Nero.aps" />
+    <ResourceCompile Include="Nero.rc" />
   </ItemGroup>
 </Project>

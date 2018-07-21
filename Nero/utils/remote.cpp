@@ -286,11 +286,4 @@ namespace remote
 
 		return ret == end(copy) ? 0 : base + (ret - begin(copy));
 	}
-	/*
-	auto accept_match() -> void
-	{
-		HANDLE thread = CreateRemoteThread(s_attached_process, NULL, NULL, (LPTHREAD_START_ROUTINE)g_pStatic->dwAcceptMatch, NULL, NULL, NULL);
-		WaitForSingleObject(thread, INFINITE);
-		CloseHandle(thread);
-	}*/
 }
