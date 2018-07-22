@@ -48,7 +48,7 @@ std::string Config::PrintApplicationPath() {
 
 void Config::Setup()
 {
-	if (std::experimental::filesystem::exists((PrintApplicationPath() + "\\Nero.ini").c_str()))
+	if (std::filesystem::exists((PrintApplicationPath() + "\\Nero.ini").c_str()))
 		return;
 
 	std::ofstream configfile;

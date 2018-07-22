@@ -11,6 +11,7 @@ public:
 	int glowmode = 0;
 	Color color;
 	Color clrRender;
+	std::string colorname;
 };
 
 extern Visuals* g_pVisuals;

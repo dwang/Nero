@@ -42,13 +42,23 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(LibraryPath);$(DXSDK_DIR)Lib\x86</LibraryPath>
+    <ExecutablePath>$(VC_ExecutablePath_x86);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);$(ExecutablePath);$(DXSDK_DIR)Utilities\bin\x86</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <ExecutablePath>$(VC_ExecutablePath_x86);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);$(ExecutablePath);$(DXSDK_DIR)Utilities\bin\x86</ExecutablePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(LibraryPath);$(DXSDK_DIR)Lib\x86</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,6 +83,13 @@
     <ClCompile Include="Nero\features\visuals.cpp" />
     <ClCompile Include="Nero\main.cpp" />
     <ClCompile Include="Nero\menu\menu.cpp" />
+    <ClCompile Include="Nero\menu\window.cpp" />
+    <ClCompile Include="Nero\overlay\Color.cpp" />
+    <ClCompile Include="Nero\overlay\Device3D9.cpp" />
+    <ClCompile Include="Nero\overlay\Font3D9.cpp" />
+    <ClCompile Include="Nero\overlay\Overlay.cpp" />
+    <ClCompile Include="Nero\overlay\Surface.cpp" />
+    <ClCompile Include="Nero\overlay\Surface3D9.cpp" />
     <ClCompile Include="Nero\sdk\sdk.cpp" />
     <ClCompile Include="Nero\utils\config.cpp" />
     <ClCompile Include="Nero\utils\netvar_manager.cpp" />
@@ -87,6 +104,15 @@
     <ClInclude Include="Nero\math\vector.hpp" />
     <ClInclude Include="Nero\menu\console_color.hpp" />
     <ClInclude Include="Nero\menu\menu.hpp" />
+    <ClInclude Include="Nero\menu\window.hpp" />
+    <ClInclude Include="Nero\overlay\drawing\Color.hpp" />
+    <ClInclude Include="Nero\overlay\render\Device3D9.hpp" />
+    <ClInclude Include="Nero\overlay\render\Font.hpp" />
+    <ClInclude Include="Nero\overlay\render\Font3D9.hpp" />
+    <ClInclude Include="Nero\overlay\render\Overlay.hpp" />
+    <ClInclude Include="Nero\overlay\render\Surface.hpp" />
+    <ClInclude Include="Nero\overlay\render\Surface3D9.hpp" />
+    <ClInclude Include="Nero\overlay\stdafx.hpp" />
     <ClInclude Include="Nero\sdk\sdk.hpp" />
     <ClInclude Include="Nero\utils\config.hpp" />
     <ClInclude Include="Nero\utils\fnv.hpp" />

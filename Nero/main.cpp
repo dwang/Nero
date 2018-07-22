@@ -4,6 +4,7 @@ void glow() { g_pVisuals->glow(); }
 void radar() { g_pVisuals->radar(); }
 void triggerbot() { g_pAim->triggerbot(); }
 void bunnyhop() { g_pMisc->bunnyhop(); }
+void overlay() { g_pWindow->draw(); }
 
 int main()
 {
@@ -25,6 +26,10 @@ int main()
 
 	g_pStatic->setup();
 
+	std::cout << "> Setting up overlay" << std::endl << std::endl;
+
+	g_pWindow->setup();
+
 	std::cout << "> Loading configuration file" << std::endl << std::endl;
 
 	g_pConfig->Setup();
@@ -40,11 +45,13 @@ int main()
 	std::thread tRadar(radar);
 	std::thread tTriggerbot(triggerbot);
 	std::thread tBunnyhop(bunnyhop);
+	std::thread tOverlay(overlay);
 
 	tGlow.detach();
 	tRadar.detach();
 	tTriggerbot.detach();
 	tBunnyhop.detach();
+	tOverlay.detach();
 
 	while (true)
 	{
@@ -99,6 +106,31 @@ int main()
 			if (g_pVisuals->glowmode > 5)
 				g_pVisuals->glowmode = 0;
 
+			switch (g_pVisuals->glowmode)
+			{
+			case 0:
+				g_pVisuals->colorname = "Pink";
+				break;
+			case 1:
+				g_pVisuals->colorname = "Red";
+				break;
+			case 2:
+				g_pVisuals->colorname = "Green";
+				break;
+			case 3:
+				g_pVisuals->colorname = "Blue";
+				break;
+			case 4:
+				g_pVisuals->colorname = "HP";
+				break;
+			case 5:
+				g_pVisuals->colorname = "Custom";
+				break;
+			default:
+				g_pVisuals->colorname = "Pink";
+				break;
+			}
+
 			g_pMenu->update();
 			Beep(330, 100);
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -123,8 +155,10 @@ int main()
 			tRadar.~thread();
 			tTriggerbot.~thread();
 			tBunnyhop.~thread();
+			tOverlay.~thread();
 			g_pSDK->ForceFullUpdate();
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			g_pWindow->overlay->shutdown();
 			remote::detach_process();
 			Beep(330, 100);
 			break;
