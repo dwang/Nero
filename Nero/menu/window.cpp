@@ -18,11 +18,17 @@ std::unique_ptr<Overlay> Window::create_overlay(const EDeviceType type, const st
 	if (!surface) {
 		return nullptr;
 	}
+	overlay->scale_overlay();
+	if (GetWindowRect(FindWindow(0, "Counter-Strike: Global Offensive"), &rect))
+	{
+		width = rect.right - rect.left;
+		height = rect.bottom - rect.top;
+	}
 
 	if (!surface->add_font(
 		"default",
 		"Segoe UI",
-		20,
+		width / 50,
 		FW_NORMAL,
 		/// or DEFAULT_QUALITY instead of PROOF_QUALITY for anti aliasing
 		DEFAULT_QUALITY
@@ -38,7 +44,7 @@ void Window::setup()
 	overlay = create_overlay(EDeviceType::Direct3D9, "Counter-Strike: Global Offensive");
 
 	auto* callback = overlay->add_callback(
-		"meow", [](Surface* surface) {
+		"menu", [](Surface* surface) {
 		surface->text(80, 50, "default", 0xFFFFFFFF, "Nero by Meow404");
 		surface->text(80, 80, "default", 0xFFFFFFFF, "Glow ESP [" + g_pConfig->vkToString(g_pConfig->hotkeys.glowesp) + "]");
 		surface->text(250, 80, "default", g_pVisuals->glowenabled ? 0xFF00FF00 : 0xFFFF0000, g_pVisuals->glowenabled ? "ON" : "OFF");
@@ -61,5 +67,8 @@ void Window::setup()
 void Window::draw()
 {
 	while (overlay->render())
+	{
+		overlay->scale_overlay();
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	}
 }

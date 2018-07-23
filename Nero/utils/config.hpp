@@ -18,6 +18,7 @@ public:
 		int radar = VK_F5;
 		int reloadconfig = VK_F7;
 		int panic = VK_END;
+		int menu = VK_INSERT;
 	} hotkeys;
 
 	struct visuals {

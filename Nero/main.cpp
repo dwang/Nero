@@ -144,6 +144,15 @@ int main()
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 
+		if (GetAsyncKeyState(g_pConfig->hotkeys.menu) & 0x8000)
+		{
+			g_pWindow->enabled = !g_pWindow->enabled;
+			g_pWindow->enabled ? g_pWindow->overlay->resume_callback("menu") : g_pWindow->overlay->pause_callback("menu");
+
+			Beep(330, 100);
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		}
+
 		if (FindWindowA(NULL, "Counter-Strike: Global Offensive") != GetForegroundWindow())
 			g_pSDK->IsGameFocused = false;
 		else

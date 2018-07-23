@@ -62,6 +62,7 @@ void Config::Setup()
 	WritePrivateProfileIntA("hotkeys", "triggerbot", hotkeys.triggerbot, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	WritePrivateProfileIntA("hotkeys", "bunnyhop", hotkeys.bunnyhop, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	WritePrivateProfileIntA("hotkeys", "radar", hotkeys.radar, (PrintApplicationPath() + "\\Nero.ini").c_str());
+	WritePrivateProfileIntA("hotkeys", "menu", hotkeys.menu, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	WritePrivateProfileIntA("hotkeys", "panic", hotkeys.panic, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	WritePrivateProfileIntA("hotkeys", "reloadconfig", hotkeys.reloadconfig, (PrintApplicationPath() + "\\Nero.ini").c_str());
 
@@ -83,6 +84,7 @@ void Config::Load()
 	hotkeys.triggerbot = GetPrivateProfileIntA("hotkeys", "triggerbot", hotkeys.triggerbot, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	hotkeys.bunnyhop = GetPrivateProfileIntA("hotkeys", "bunnyhop", hotkeys.bunnyhop, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	hotkeys.radar = GetPrivateProfileIntA("hotkeys", "radar", hotkeys.radar, (PrintApplicationPath() + "\\Nero.ini").c_str());
+	hotkeys.menu = GetPrivateProfileIntA("hotkeys", "menu", hotkeys.menu, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	hotkeys.panic = GetPrivateProfileIntA("hotkeys", "panic", hotkeys.panic, (PrintApplicationPath() + "\\Nero.ini").c_str());
 	hotkeys.reloadconfig = GetPrivateProfileIntA("hotkeys", "reloadconfig", hotkeys.reloadconfig, (PrintApplicationPath() + "\\Nero.ini").c_str());
 
