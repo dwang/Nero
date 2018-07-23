@@ -8,7 +8,7 @@ void Aim::triggerbot()
 	{
 		if (g_pSDK->IsGameFocused && g_pSDK->IsInGame() && triggerbotenabled)
 		{
-			if (GetAsyncKeyState(g_pConfig->triggerbot.key))
+			if (GetAsyncKeyState(g_pConfig->triggerbot.key) & 0x8000)
 			{
 				if (g_pSDK->GetLocalPlayer() == NULL || !(g_pSDK->GetLocalHealth() > 0))
 					continue;
